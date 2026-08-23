@@ -1,0 +1,22 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: expenseflow-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: database
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
+    ports:
+      - "3307:3306"
+    volumes:
+      - expenseflow_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uuser", "-puser_password"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  expenseflow_mysql_data:

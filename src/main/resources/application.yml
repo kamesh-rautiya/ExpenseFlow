@@ -1,0 +1,11 @@
+spring:
+  profiles:
+    default: dev
+
+server:
+  servlet:
+    context-path: /api
+  port: 8000
+
+jwt:
+  secret: expenseflow-local-development-secret-key-32bytes
