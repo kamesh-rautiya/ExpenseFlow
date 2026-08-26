@@ -29,7 +29,5 @@ ENV PORT=8000
 EXPOSE ${PORT}
 
 # Use production profile; env vars are injected by Railway
-ENTRYPOINT ["java", \
-  "-Dserver.port=${PORT}", \
-  "-Dspring.profiles.active=prod", \
-  "-jar", "app.jar"]
+# Shell form so $PORT is expanded at runtime
+ENTRYPOINT java -Dserver.port=$PORT -Dspring.profiles.active=prod -jar app.jar

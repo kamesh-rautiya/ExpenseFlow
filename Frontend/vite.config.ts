@@ -12,6 +12,10 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Use node-server preset for Railway deployment (instead of default cloudflare-module)
+  nitro: {
+    preset: "node-server",
+  },
   vite: {
     server: {
       proxy: {
