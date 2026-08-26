@@ -2,6 +2,42 @@
 
 ExpenseFlow is a modern, full-stack personal finance and expense tracking web application. It combines a robust **Spring Boot 3** REST API backend with a responsive **React 19 / Vite** frontend powered by TanStack Start, Tailwind CSS, and Recharts.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://frontend-production-ae7e.up.railway.app)
+[![API Status](https://img.shields.io/badge/API-Live-success?style=for-the-badge&logo=spring&logoColor=white)](https://backend-production-78678.up.railway.app/api/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
+
+---
+
+## 🌐 Live Deployment
+
+- **Frontend App:** [https://frontend-production-ae7e.up.railway.app](https://frontend-production-ae7e.up.railway.app)
+- **Backend API:** [https://backend-production-78678.up.railway.app/api/](https://backend-production-78678.up.railway.app/api/)
+- **Swagger Documentation:** [https://backend-production-78678.up.railway.app/api/swagger-ui/index.html](https://backend-production-78678.up.railway.app/api/swagger-ui/index.html)
+
+---
+
+## 📸 Screenshots
+
+### 🌟 Landing Page
+![Landing Page](screenshots/landing.png)
+
+### 📊 Dashboard & Overview
+![Dashboard](screenshots/dashboard.png)
+
+### 📈 Analytics & Trends
+![Analytics](screenshots/analytics.png)
+
+### 💳 Account Management
+![Accounts](screenshots/accounts.png)
+
+### 📝 Transactions & Records
+![Records](screenshots/records.png)
+
+### 🔐 Authentication
+| Sign In | Sign Up |
+| :---: | :---: |
+| ![Sign In](screenshots/signin.png) | ![Sign Up](screenshots/signup.png) |
+
 ---
 
 ## 🌟 Features
@@ -29,7 +65,7 @@ ExpenseFlow is a modern, full-stack personal finance and expense tracking web ap
 - **Persistence:** Spring Data JPA / Hibernate
 - **Database:**
   - In-memory **H2 Database** for local development & testing
-  - **MySQL** configuration ready for production
+  - **MySQL** for cloud deployment / production
 - **API Specs:** SpringDoc OpenAPI 3 / Swagger UI
 - **Testing:** JUnit 5, Mockito, AssertJ, Spring Security Test
 
@@ -49,12 +85,14 @@ ExpenseFlow/
 │   ├── src/                 # Java source code and test files
 │   ├── pom.xml              # Maven dependencies and build configuration
 │   ├── mvnw / mvnw.cmd      # Maven wrapper executables
-│   └── .mvn/                # Maven wrapper binaries and properties
+│   ├── Dockerfile           # Multi-stage production container
+│   └── railway.json         # Railway deployment config
 ├── Frontend/                # React + Vite web client
 │   ├── src/                 # React components, routes, and API client
 │   ├── public/              # Static assets
 │   ├── package.json         # Node.js dependencies and scripts
 │   └── vite.config.ts       # Vite & dev proxy configuration
+├── screenshots/             # Application UI screenshots
 ├── .gitignore               # Comprehensive monorepo gitignore
 └── README.md                # Project documentation
 ```
