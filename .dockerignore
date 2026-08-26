@@ -1,0 +1,25 @@
+# Build artifacts
+target/
+!target/*.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.cursor/
+
+# Git
+.git/
+.gitignore
+
+# Docker
+docker-compose.yml
+Dockerfile
+
+# Docs
+*.md
+api-docs.yml
+assets/
+
+# Maven wrapper (downloaded fresh in build stage)
+.mvn/wrapper/maven-wrapper.jar

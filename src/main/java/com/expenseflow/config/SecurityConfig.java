@@ -18,8 +18,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -35,6 +37,7 @@ public class SecurityConfig {
     private final String[] noAuthPaths = {
             // endpoint for check that the app is running
             "/",
+            "/h2-console/**",
             // authentication and registration endpoints
             "/auth/**",
             // documentation endpoints
@@ -47,14 +50,31 @@ public class SecurityConfig {
     //paths, which require role ADMIN
     private final String[] adminPaths = {};
 
-    //enables cors for front end
+    //enables cors for front end (supports CORS_ALLOWED_ORIGINS env var for production)
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:8080"));
+
+        // Always allow localhost for development
+        List<String> patterns = new ArrayList<>(Arrays.asList(
+                "http://localhost:*",
+                "http://127.0.0.1:*"
+        ));
+
+        // Add production origins from environment variable (comma-separated)
+        String envOrigins = System.getenv("CORS_ALLOWED_ORIGINS");
+        if (envOrigins != null && !envOrigins.isBlank()) {
+            Arrays.stream(envOrigins.split(","))
+                    .map(String::trim)
+                    .filter(s -> !s.isEmpty())
+                    .forEach(patterns::add);
+        }
+
+        configuration.setAllowedOriginPatterns(patterns);
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         configuration.setExposedHeaders(Arrays.asList("Authorization", "content-type"));
-        configuration.setAllowedHeaders(Arrays.asList("Authorization", "content-type"));
+        configuration.setAllowedHeaders(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
         return source;
