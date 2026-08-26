@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    default: dev
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+
+server:
+  servlet:
+    context-path: /api
+  port: 8000
+
+jwt:
+  secret: expenseflow-local-development-secret-key-32bytes

@@ -1,123 +1,138 @@
-<img src="assets/images/expenseflow-logo.svg" alt="ExpenseFlow logo" width=64 />
+# ExpenseFlow 💸
 
-# ExpenseFlow - Backend
+ExpenseFlow is a modern, full-stack personal finance and expense tracking web application. It combines a robust **Spring Boot 3** REST API backend with a responsive **React 19 / Vite** frontend powered by TanStack Start, Tailwind CSS, and Recharts.
 
-[![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=java&logoColor=white&color=f1931c)](https://www.java.com/en/)
-[![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=flat&logo=spring&logoColor=white)](https://spring.io)
-[![Apache Maven](https://img.shields.io/badge/Apache%20Maven-C71A36?style=flat&logo=Apache%20Maven&logoColor=white)](https://maven.apache.org)
-[![MySql](https://img.shields.io/badge/MySQL-00000F?style=flat&logo=mysql&logoColor=white&color=3d6e93)](https://www.mysql.com)
-[![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=flat&logo=swagger&logoColor=white)](https://swagger.io)
-[![Postman](https://img.shields.io/badge/Postman-FF6C37?style=flat&logo=postman&logoColor=white)](https://www.postman.com)
+---
 
-## 📝 Description
+## 🌟 Features
 
-ExpenseFlow is a tool for **managing personal finances** that allows users to create and categorize records, analyze income
-and expenses, and manage multiple accounts.
+- **🔐 Secure Authentication:** JWT-based stateless authentication with role-based access control (Admin / User).
+- **💳 Multi-Account Management:** Manage multiple accounts (Checking, Savings, Cash, Investments) with custom colors, icons, and currencies.
+- **📊 Interactive Analytics:**
+  - Real-time balance evolution charts powered by Recharts.
+  - Expense and income breakdowns by category (Food, Housing, Salary, Investments, etc.).
+  - Total cashflow and balance metrics across accounts.
+- **📝 Record Tracking & Filtering:**
+  - Fast expense and income entry with amounts, notes, labels, and timestamps.
+  - Multi-criteria filtering by label, account, category, and date ranges.
+  - Server-side pagination and sorting.
+- **📖 OpenAPI / Swagger Docs:** Interactive API exploration and testing at `/api/swagger-ui/index.html`.
 
-The backend was written in **Java** using the **Spring framework** and uses a MySql database for data persistence. The
-frontend is a single-page application connected via REST API and built with TypeScript, **Vue.js**, and Vuetify.
+---
 
-## 🔗 Links
+## 🏗️ Tech Stack & Architecture
 
-- [📺 Video example](https://www.youtube.com/watch?v=rzZ-Xvy9iwY)
-- [💅 Frontend repo](https://github.com/janbabak/ExpenseFlow-FE)
-- [📯 API documentation (Post man)](https://documenter.getpostman.com/view/13190557/2s93CRKWwv)
-- [📄 API documentation (Swagger)](https://janbabak.github.io/ExpenseFlow-BE/)
+### **Backend (`/Backend`)**
+- **Framework:** Spring Boot 3
+- **Language:** Java 17+ (compatible with Java 21)
+- **Security:** Spring Security & JSON Web Tokens (JJWT)
+- **Persistence:** Spring Data JPA / Hibernate
+- **Database:**
+  - In-memory **H2 Database** for local development & testing
+  - **MySQL** configuration ready for production
+- **API Specs:** SpringDoc OpenAPI 3 / Swagger UI
+- **Testing:** JUnit 5, Mockito, AssertJ, Spring Security Test
 
-## ⚽️ Project Goals
+### **Frontend (`/Frontend`)**
+- **Framework:** React 19 + TypeScript + Vite
+- **Routing & State:** TanStack Start / TanStack Router & TanStack Query
+- **Styling:** Tailwind CSS + Radix UI / Shadcn UI components + Lucide Icons
+- **Visualizations:** Recharts data visualization library
 
-I created this project for several reasons. Firstly, I wanted to **experiment with various technologies**. Secondly, I
-aimed to experience all stages of the software development cycle. Additionally, I intended to add work to my portfolio
-that would demonstrate my development skills.
+---
 
-## 🏗️ Realization
+## 📂 Repository Structure
 
-To begin, I made a list of the **necessary features** and selected the appropriate technologies, and then started
-developing the backend server.
-
-I developed the **backend** in **Java** and **Spring** framework and chose the MySql database for data persistence. The
-application utilizes the **MVC architecture**. The database runs in a **Docker** container. Authentication and
-authorization are provided by **JWT token** using **Spring Security**. The API
-generates [Open Api](https://janbabak.github.io/ExpenseFlow-BE/) documentation automatically. Additionally, I created
-[documentation](https://documenter.getpostman.com/view/13190557/2s93CRKWwv#b9ffcedf-337f-4546-8095-5740e9047e96) for the
-API using Postman, which includes example requests and responses.
-
-## 🚀 Features
-
-- Multiple financial accounts
-- Add records and categorize them
-- Analytic of categories, incomes, expenses, cash flow...
-- Charts
-- Responsive web interface
-
-## 🧑‍🔬 Technologies
-
-- [Java](https://www.java.com/en/)
-- [Spring](https://spring.io)
-- [Maven](https://maven.apache.org)
-- [Docker](https://www.docker.com)
-- [MySql](https://www.mysql.com)
-- [git](https://git-scm.com)
-
-## ❌ Issues
-
-During the development, I encountered some issues. One of them was adding filtering and sorting parameters to the "get
-all records" endpoint. To solve this problem, I used the specification-arg-resolver library which can map request
-parameters to Jpa specifications and extended the record repository by PagingAndSortingRepository, and
-JpaSpecificationExecutor.
-
-## 😁 Conclusion
-
-I originally planned to create a much smaller project but finished with a larger one. I **gained new knowledge** during
-development - for instance, how to elegantly add **filtering parameters** to the API endpoint or use **JPQL** for more
-complex database queries. So, I am satisfied with the result of my work.
-
-## ✅ Software requirements
-
-- Java 17
-- Docker, Docker compose
-
-## 🎬 How to run
-
-### Clone repository
-
-```bash
-git clone https://github.com/babakjan/ExpenseFlow-BE.git
-cd ExpenseFlow-BE/
+```
+ExpenseFlow/
+├── Backend/                 # Spring Boot REST API
+│   ├── src/                 # Java source code and test files
+│   ├── pom.xml              # Maven dependencies and build configuration
+│   ├── mvnw / mvnw.cmd      # Maven wrapper executables
+│   └── .mvn/                # Maven wrapper binaries and properties
+├── Frontend/                # React + Vite web client
+│   ├── src/                 # React components, routes, and API client
+│   ├── public/              # Static assets
+│   ├── package.json         # Node.js dependencies and scripts
+│   └── vite.config.ts       # Vite & dev proxy configuration
+├── .gitignore               # Comprehensive monorepo gitignore
+└── README.md                # Project documentation
 ```
 
-### Start database
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Java JDK 17+** (or Java 21)
+- **Node.js 18+** and **npm** (or Bun / pnpm)
+
+---
+
+### 1. Start the Backend API
 
 ```bash
-docker compose up -d
+cd Backend
+
+# Run tests
+./mvnw clean test
+
+# Start the Spring Boot server (runs on http://localhost:8000)
+./mvnw spring-boot:run
 ```
 
-### Start the app
+- Backend API Base URL: `http://localhost:8000/api`
+- Swagger UI Documentation: [http://localhost:8000/api/swagger-ui/index.html](http://localhost:8000/api/swagger-ui/index.html)
+- H2 Database Console: [http://localhost:8000/api/h2-console](http://localhost:8000/api/h2-console) (JDBC URL: `jdbc:h2:mem:expenseflow`)
 
-- Set the development environment. The app will connect to the local database.
-  ```bash
-  export spring_profiles_active=dev
-  ```
-- Create database schema - open `./src/main/resources/application.yml` set the value of `spring.jpa.hibernate.ddl-auto`
-  to `create`.
-- Run the app (app will run on http://localhost:8000/api)
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-- If you want to initiate the database with test data, stop the app and undo the changes you've done in the application
-  properties file (set `create` to `none`), plus make sure, that the `spring.sql.init.mode` has value `always`.
-- run the app again
-    ```bash
-    ./mvnw spring-boot:run
-    ```
-- If you want to run the app repeatedly, change the previously added `always` to `never` line because you don't want to
-  insert test data every time you restart the app.
+---
 
-- Swagger documentation of running app can be found at http://localhost:8000/api/swagger-ui/index.html
+### 2. Start the Frontend Client
 
-## 🎆 Screenshots
+In a new terminal window:
 
-<img src="assets/images/landing-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/dashboard-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/records-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/analytic-shadow,rounded.webp" alt="Dashboard" />
+```bash
+cd Frontend
+
+# Install dependencies
+npm install
+
+# Start Vite development server (proxies /api to http://localhost:8000)
+npm run dev
+```
+
+Open [http://localhost:5173](http://localhost:5173) in your browser.
+
+---
+
+## 🧪 Demo Credentials
+
+The backend comes pre-seeded with sample data for demonstration:
+
+| Email | Password | Role | Currency |
+| :--- | :--- | :--- | :--- |
+| `honza@gmail.com` | `secret` | USER | EUR |
+| `matej@gmail.com` | `secret` | USER | CZK |
+| `admin@gmail.com` | `secret` | ADMIN | EUR |
+
+*(You can also register a new account from the Sign Up page at any time).*
+
+---
+
+## 🛠️ Production Build & Verification
+
+```bash
+# Build Backend JAR
+cd Backend
+./mvnw clean package
+
+# Build Frontend Bundle
+cd ../Frontend
+npm run build
+```
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
