@@ -239,20 +239,20 @@ function Records() {
             resetForm();
             setIsAddOpen(true);
           }}
-          className="inline-flex items-center gap-1.5 rounded-md bg-amber px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wide text-amber-foreground shadow-sm transition-opacity hover:opacity-90 cursor-pointer"
+          className="btn-interactive inline-flex items-center gap-1.5 rounded-md bg-amber px-4 py-2 text-xs font-semibold uppercase tracking-wider text-amber-foreground shadow-sm cursor-pointer"
         >
-          <Plus className="h-3.5 w-3.5" />
+          <Plus className="h-4 w-4" />
           Add record
         </button>
       }
     >
-      <div className="rounded-md border border-border bg-card shadow-sm">
-        <div className="flex flex-wrap items-center gap-4 border-b border-border p-4">
+      <div className="rounded-xl border border-border bg-card shadow-sm overflow-hidden">
+        <div className="flex flex-wrap items-center gap-4 border-b border-border p-4 bg-muted/20">
           <Input
             value={label}
             onChange={(e) => setLabel(e.target.value)}
             placeholder="Search by label"
-            className="h-9 w-44"
+            className="h-9 w-44 transition-all focus-visible:ring-primary"
           />
           <Select value={category} onValueChange={setCategory}>
             <SelectTrigger className="h-9 w-52">
@@ -293,7 +293,8 @@ function Records() {
           <button
             onClick={resetFilters}
             aria-label="Clear filters"
-            className="ml-auto text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+            title="Clear filters"
+            className="ml-auto rounded-full p-2 text-muted-foreground transition-all hover:bg-accent hover:text-foreground cursor-pointer"
           >
             <Trash2 className="h-4 w-4" />
           </button>
@@ -308,18 +309,18 @@ function Records() {
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-border text-xs text-muted-foreground">
+              <tr className="border-b border-border bg-muted/40 text-xs text-muted-foreground">
                 <th className="w-8" />
-                <th className="px-3 py-2 text-left font-medium">Label</th>
-                <th className="px-3 py-2 text-left font-medium">Category</th>
-                <th className="px-3 py-2 text-left font-medium">Account</th>
-                <th className="px-3 py-2 text-right font-medium">
+                <th className="px-3 py-2.5 text-left font-semibold uppercase tracking-wider text-[11px]">Label</th>
+                <th className="px-3 py-2.5 text-left font-semibold uppercase tracking-wider text-[11px]">Category</th>
+                <th className="px-3 py-2.5 text-left font-semibold uppercase tracking-wider text-[11px]">Account</th>
+                <th className="px-3 py-2.5 text-right font-semibold uppercase tracking-wider text-[11px]">
                   <span className="inline-flex items-center gap-1">
                     <ArrowDown className="h-3 w-3" /> Date
                   </span>
                 </th>
-                <th className="px-3 py-2 text-right font-medium">Amount</th>
-                <th className="px-3 py-2 text-right font-medium">Actions</th>
+                <th className="px-3 py-2.5 text-right font-semibold uppercase tracking-wider text-[11px]">Amount</th>
+                <th className="px-3 py-2.5 text-right font-semibold uppercase tracking-wider text-[11px]">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -328,12 +329,12 @@ function Records() {
                 const acc = record.account;
                 const open = expanded === record.id;
                 return (
-                  <tr key={record.id} className="border-b border-border last:border-0">
+                  <tr key={record.id} className="row-hover border-b border-border last:border-0 transition-colors">
                     <td className="pl-3">
                       <button
                         aria-label="Toggle note"
                         onClick={() => setExpanded(open ? null : record.id)}
-                        className="text-muted-foreground cursor-pointer"
+                        className="rounded-full p-1 text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
                       >
                         {open ? (
                           <ChevronDown className="h-4 w-4" />
@@ -356,29 +357,29 @@ function Records() {
                     <td className="px-3 py-3">
                       <Chip label={acc?.name ?? "Unknown"} color={acc?.color ?? "#999999"} />
                     </td>
-                    <td className="whitespace-nowrap px-3 py-3 text-right text-muted-foreground">
+                    <td className="whitespace-nowrap px-3 py-3 text-right text-muted-foreground text-xs">
                       {formatDateTime(record.date)}
                     </td>
                     <td
-                      className={`whitespace-nowrap px-3 py-3 text-right font-semibold ${record.amount < 0 ? "text-expense" : "text-income"}`}
+                      className={`whitespace-nowrap px-3 py-3 text-right font-bold ${record.amount < 0 ? "text-expense" : "text-income"}`}
                     >
                       {formatMoney(record.amount)} {acc?.currency ?? "EUR"}
                     </td>
                     <td className="px-3 py-3">
-                      <div className="flex justify-end gap-3 text-muted-foreground">
-                        <button
-                          aria-label="Delete record"
-                          onClick={() => handleDelete(record.id)}
-                          className="hover:text-expense cursor-pointer"
-                        >
-                          <Trash2 className="h-3.5 w-3.5" />
-                        </button>
+                      <div className="flex justify-end gap-1 text-muted-foreground">
                         <button
                           aria-label="Edit record"
                           onClick={() => openEdit(record)}
-                          className="hover:text-foreground cursor-pointer"
+                          className="rounded-full p-1.5 transition-all hover:bg-accent hover:text-foreground cursor-pointer"
                         >
                           <Pencil className="h-3.5 w-3.5" />
+                        </button>
+                        <button
+                          aria-label="Delete record"
+                          onClick={() => handleDelete(record.id)}
+                          className="rounded-full p-1.5 transition-all hover:bg-destructive/15 hover:text-destructive cursor-pointer"
+                        >
+                          <Trash2 className="h-3.5 w-3.5" />
                         </button>
                       </div>
                     </td>

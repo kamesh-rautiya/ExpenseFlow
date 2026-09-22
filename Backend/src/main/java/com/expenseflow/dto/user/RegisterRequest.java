@@ -28,7 +28,7 @@ public class RegisterRequest {
     private String email;
 
     @NotNull
-    @Size(min = 8, max = 40)
+    @Size(min = 6, max = 40)
     private String password;
 
     @NotNull

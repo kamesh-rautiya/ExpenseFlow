@@ -149,9 +149,9 @@ The backend comes pre-seeded with sample data for demonstration:
 
 | Email | Password | Role | Currency |
 | :--- | :--- | :--- | :--- |
-| `honza@gmail.com` | `secret` | USER | EUR |
-| `matej@gmail.com` | `secret` | USER | CZK |
-| `admin@gmail.com` | `secret` | ADMIN | EUR |
+| `honza@gmail.com` | `12345678` | USER | EUR |
+| `matej@gmail.com` | `12345678` | USER | CZK |
+| `admin@gmail.com` | `12345678` | ADMIN | EUR |
 
 *(You can also register a new account from the Sign Up page at any time).*
 

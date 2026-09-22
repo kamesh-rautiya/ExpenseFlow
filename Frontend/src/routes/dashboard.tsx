@@ -177,17 +177,17 @@ function Dashboard() {
             resetForm();
             setIsAddOpen(true);
           }}
-          className="inline-flex items-center gap-1.5 rounded-md bg-amber px-3.5 py-2 text-[11px] font-semibold uppercase tracking-wide text-amber-foreground shadow-sm transition-opacity hover:opacity-90 cursor-pointer"
+          className="btn-interactive inline-flex items-center gap-1.5 rounded-md bg-amber px-4 py-2 text-xs font-semibold uppercase tracking-wider text-amber-foreground shadow-sm cursor-pointer"
         >
-          <Plus className="h-3.5 w-3.5" />
+          <Plus className="h-4 w-4" />
           Add account
         </button>
       }
     >
       {accountsLoading ? (
-        <div className="text-center py-8 text-muted-foreground text-sm">Loading accounts...</div>
+        <div className="text-center py-12 text-muted-foreground text-sm">Loading accounts...</div>
       ) : accounts.length === 0 ? (
-        <div className="text-center py-8 text-muted-foreground border border-dashed border-border rounded-md">
+        <div className="text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
           No accounts found. Click "Add account" to create one.
         </div>
       ) : (
@@ -195,46 +195,51 @@ function Dashboard() {
           {accounts.map((account) => (
             <div
               key={account.id}
-              className="rounded-md border border-border bg-card p-4 shadow-sm"
-              style={{ borderLeft: `4px solid ${account.color}` }}
+              className="card-hover rounded-xl border border-border bg-card p-5 shadow-sm relative overflow-hidden"
+              style={{ borderLeft: `5px solid ${account.color}` }}
             >
               <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2 text-foreground">
-                  <CreditCard className="h-4 w-4" style={{ color: account.color }} />
-                  <span className="text-lg font-semibold">{account.name}</span>
+                <div className="flex items-center gap-2.5 text-foreground">
+                  <div
+                    className="flex h-8 w-8 items-center justify-center rounded-lg"
+                    style={{ backgroundColor: `${account.color}18` }}
+                  >
+                    <CreditCard className="h-4 w-4" style={{ color: account.color }} />
+                  </div>
+                  <span className="text-base font-semibold">{account.name}</span>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-1">
                   <button
                     aria-label="Edit account"
                     onClick={() => openEdit(account)}
-                    className="text-muted-foreground transition-colors hover:text-foreground cursor-pointer"
+                    className="rounded-full p-1.5 text-muted-foreground transition-all hover:bg-accent hover:text-foreground cursor-pointer"
                   >
                     <Pencil className="h-3.5 w-3.5" />
                   </button>
                   <button
                     aria-label="Delete account"
                     onClick={() => handleDelete(account.id)}
-                    className="text-muted-foreground transition-colors hover:text-expense cursor-pointer"
+                    className="rounded-full p-1.5 text-muted-foreground transition-all hover:bg-destructive/15 hover:text-destructive cursor-pointer"
                   >
                     <Trash2 className="h-3.5 w-3.5" />
                   </button>
                 </div>
               </div>
-              <p className="mt-2 text-2xl font-semibold text-foreground">
+              <p className="mt-4 text-2xl font-bold tracking-tight text-foreground">
                 {formatMoney(account.balance)}{" "}
-                <span className="text-base font-normal text-muted-foreground">
+                <span className="text-sm font-medium text-muted-foreground">
                   {account.currency}
                 </span>
               </p>
-              <div className="mt-3 space-y-1 text-xs">
+              <div className="mt-4 space-y-1.5 border-t border-border/60 pt-3 text-xs">
                 <div className="flex justify-between">
-                  <span className="font-semibold text-foreground">Monthly Incomes</span>
+                  <span className="text-muted-foreground">Monthly Income</span>
                   <span className="font-semibold text-income">
                     +{formatMoney(account.incomes ?? 0)}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-semibold text-foreground">Monthly Expenses</span>
+                  <span className="text-muted-foreground">Monthly Expenses</span>
                   <span className="font-semibold text-expense">
                     {formatMoney(account.expenses ?? 0)}
                   </span>
@@ -246,29 +251,29 @@ function Dashboard() {
       )}
 
       <div className="mb-4 mt-10 flex items-center justify-between">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground">Last records</h2>
+        <h2 className="text-xl font-bold tracking-tight text-foreground">Recent Records</h2>
       </div>
 
       {recordsLoading ? (
-        <div className="text-center py-8 text-muted-foreground text-sm">Loading records...</div>
+        <div className="text-center py-12 text-muted-foreground text-sm">Loading records...</div>
       ) : recentRecords.length === 0 ? (
-        <div className="text-center py-8 text-muted-foreground border border-dashed border-border rounded-md">
+        <div className="text-center py-12 text-muted-foreground border border-dashed border-border rounded-xl">
           No records found. Click on the Records tab to add a transaction.
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-2.5">
           {recentRecords.map((record) => {
             const category = record.category;
             const account = record.account;
             return (
               <div
                 key={record.id}
-                className="flex items-start justify-between rounded-md border border-border bg-card px-4 py-3 shadow-sm"
+                className="card-hover flex items-start justify-between rounded-xl border border-border bg-card px-4 py-3.5 shadow-xs transition-all"
               >
                 <div>
                   <div className="flex items-center gap-3">
                     <span className="text-sm font-semibold text-foreground">{record.label}</span>
-                    <span className="text-sm text-muted-foreground">{record.note}</span>
+                    <span className="text-xs text-muted-foreground">{record.note}</span>
                   </div>
                   <div className="mt-2 flex gap-2">
                     <Chip label={category.name} color={category.color} />
@@ -276,9 +281,9 @@ function Dashboard() {
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="text-sm text-muted-foreground">{formatDate(record.date)}</p>
+                  <p className="text-xs text-muted-foreground">{formatDate(record.date)}</p>
                   <p
-                    className={`mt-1 text-sm font-semibold ${record.amount < 0 ? "text-expense" : "text-income"}`}
+                    className={`mt-1 text-sm font-bold ${record.amount < 0 ? "text-expense" : "text-income"}`}
                   >
                     {formatAmount(record.amount, account.currency).replace("+", "")}
                   </p>

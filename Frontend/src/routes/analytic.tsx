@@ -21,12 +21,12 @@ import { api, authStorage } from "@/lib/api";
 export const Route = createFileRoute("/analytic")({
   head: () => ({
     meta: [
-      { title: "Analytic — ExpenseFlow" },
+      { title: "Analytics — ExpenseFlow" },
       {
         name: "description",
         content: "Cash flow, category split and balance evolution for your chosen interval.",
       },
-      { property: "og:title", content: "Analytic — ExpenseFlow" },
+      { property: "og:title", content: "Analytics — ExpenseFlow" },
       { property: "og:description", content: "Spending, categories and balance evolution." },
     ],
   }),
@@ -99,10 +99,10 @@ function Analytic() {
   const currencyCode = totalAnalytic?.currency ?? "EUR";
 
   return (
-    <AppShell title="Analytic">
-      <div className="grid gap-6 md:grid-cols-2 rounded-md border border-border bg-card p-4 shadow-sm">
+    <AppShell title="Analytics">
+      <div className="card-hover grid gap-6 md:grid-cols-2 rounded-xl border border-border bg-card p-5 shadow-sm">
         <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[11px] text-muted-foreground font-semibold uppercase">
+          <span className="text-[11px] text-muted-foreground font-semibold uppercase tracking-wider">
             Start Date
           </span>
           <div className="flex items-center gap-2">
@@ -111,12 +111,12 @@ function Analytic() {
               type="date"
               value={startDate}
               onChange={(e) => setStartDate(e.target.value)}
-              className="bg-transparent text-foreground border border-border rounded px-2 py-1 text-sm focus:outline-none"
+              className="bg-transparent text-foreground border border-border rounded px-2.5 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
         </label>
         <label className="flex flex-col gap-1 text-sm">
-          <span className="text-[11px] text-muted-foreground font-semibold uppercase">
+          <span className="text-[11px] text-muted-foreground font-semibold uppercase tracking-wider">
             End Date
           </span>
           <div className="flex items-center gap-2">
@@ -125,15 +125,15 @@ function Analytic() {
               type="date"
               value={endDate}
               onChange={(e) => setEndDate(e.target.value)}
-              className="bg-transparent text-foreground border border-border rounded px-2 py-1 text-sm focus:outline-none"
+              className="bg-transparent text-foreground border border-border rounded px-2.5 py-1 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
             />
           </div>
         </label>
       </div>
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <section className="rounded-md border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-center text-xl font-medium text-foreground">Spending Summary</h2>
+        <section className="card-hover rounded-xl border border-border bg-card p-6 shadow-sm">
+          <h2 className="text-center text-lg font-bold text-foreground">Spending Summary</h2>
           {totalLoading ? (
             <div className="text-center py-12 text-muted-foreground text-sm">
               Loading summary...
@@ -146,7 +146,7 @@ function Analytic() {
                 currency={currencyCode}
               />
               <Row
-                label="Total Incomes:"
+                label="Total Income:"
                 value={formatMoney(totalAnalytic.incomes)}
                 currency={currencyCode}
                 tone="in"
@@ -171,8 +171,8 @@ function Analytic() {
           )}
         </section>
 
-        <section className="rounded-md border border-border bg-card p-6 shadow-sm">
-          <h2 className="text-center text-xl font-medium text-foreground">Categories Split</h2>
+        <section className="card-hover rounded-xl border border-border bg-card p-6 shadow-sm">
+          <h2 className="text-center text-lg font-bold text-foreground">Categories Split</h2>
           {categoriesLoading ? (
             <div className="text-center py-12 text-muted-foreground text-sm">
               Loading categories...
@@ -192,8 +192,10 @@ function Analytic() {
                       nameKey="name"
                       innerRadius={60}
                       outerRadius={95}
-                      paddingAngle={1}
-                      isAnimationActive={false}
+                      paddingAngle={2}
+                      isAnimationActive={true}
+                      animationDuration={800}
+                      animationEasing="ease-out"
                       label={({ percent }: { percent?: number }) =>
                         `${((percent ?? 0) * 100).toFixed(1)}%`
                       }
@@ -207,15 +209,20 @@ function Analytic() {
                   </PieChart>
                 </ResponsiveContainer>
               </div>
-              <ul className="mt-2 space-y-1 text-xs text-muted-foreground max-h-[100px] overflow-y-auto">
+              <ul className="mt-2 space-y-1.5 text-xs text-muted-foreground max-h-[100px] overflow-y-auto pr-2">
                 {categoryBreakdown.map((c) => (
-                  <li key={c.name} className="flex items-center gap-2">
-                    <span
-                      className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: c.color }}
-                      aria-hidden
-                    />
-                    {c.name}
+                  <li key={c.name} className="flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <span
+                        className="h-2 w-2 rounded-full"
+                        style={{ backgroundColor: c.color }}
+                        aria-hidden
+                      />
+                      {c.name}
+                    </span>
+                    <span className="font-medium text-foreground">
+                      {formatMoney(c.value)} {currencyCode}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -224,8 +231,8 @@ function Analytic() {
         </section>
       </div>
 
-      <section className="mt-6 rounded-md border border-border bg-card p-6 shadow-sm">
-        <h2 className="text-center text-xl font-medium text-foreground">Balance Evolution</h2>
+      <section className="card-hover mt-6 rounded-xl border border-border bg-card p-6 shadow-sm">
+        <h2 className="text-center text-lg font-bold text-foreground">Balance Evolution</h2>
         {evolutionLoading ? (
           <div className="text-center py-12 text-muted-foreground text-sm">
             Loading evolution...
@@ -238,21 +245,23 @@ function Analytic() {
           <div className="mt-6 h-[280px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={balanceSeries}>
-                <CartesianGrid stroke="var(--color-border)" />
-                <XAxis dataKey="date" tick={{ fontSize: 11 }} stroke="var(--color-border)" />
+                <CartesianGrid stroke="var(--color-border)" strokeDasharray="3 3" />
+                <XAxis dataKey="date" tick={{ fontSize: 11 }} stroke="var(--color-muted-foreground)" />
                 <YAxis
                   domain={["dataMin - 100", "dataMax + 100"]}
                   tick={{ fontSize: 11 }}
-                  stroke="var(--color-border)"
+                  stroke="var(--color-muted-foreground)"
                 />
                 <Tooltip formatter={(v: number) => `${formatMoney(v)} ${currencyCode}`} />
                 <Line
                   type="monotone"
                   dataKey="balance"
                   stroke="var(--color-brand)"
-                  strokeWidth={2}
-                  dot={false}
-                  isAnimationActive={false}
+                  strokeWidth={2.5}
+                  dot={{ r: 3, fill: "var(--color-brand)" }}
+                  activeDot={{ r: 5 }}
+                  isAnimationActive={true}
+                  animationDuration={1000}
                 />
               </LineChart>
             </ResponsiveContainer>

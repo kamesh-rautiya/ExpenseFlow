@@ -37,7 +37,7 @@ export const categories: Category[] = [
   { id: 7, name: "Alcohol", color: "#294acf", icon: "martini" },
   { id: 8, name: "Salary, wage", color: "#FFAB00", icon: "coins" },
   { id: 9, name: "Investments", color: "#4285f4", icon: "chart" },
-  { id: 10, name: "Other incomes", color: "#f2c14a", icon: "wallet" },
+  { id: 10, name: "Other income", color: "#f2c14a", icon: "wallet" },
   { id: 11, name: "Others", color: "#1a1a1a", icon: "shapes" },
 ];
 

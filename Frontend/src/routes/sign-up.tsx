@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { SiteHeader } from "@/components/moneybag/SiteHeader";
 import { Input } from "@/components/ui/input";
@@ -12,6 +12,9 @@ import {
 } from "@/components/ui/select";
 import { api } from "@/lib/api";
 import { toast } from "sonner";
+import { UserPlus } from "lucide-react";
+
+import animeBg from "@/assets/anime-finance-bg.jpg";
 
 export const Route = createFileRoute("/sign-up")({
   head: () => ({
@@ -65,57 +68,105 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen w-full flex flex-col overflow-x-hidden text-foreground">
+      {/* Fullscreen anime money background with blur */}
+      <div
+        className="fixed inset-0 -z-20 bg-cover bg-center bg-no-repeat blur-[4px] scale-105"
+        style={{ backgroundImage: `url(${animeBg})` }}
+      />
+      <div className="fixed inset-0 -z-10 bg-gradient-to-b from-slate-950/90 via-slate-950/80 to-slate-950/95 backdrop-blur-[6px]" />
+
       <SiteHeader />
-      <main className="mx-auto max-w-sm px-5 py-20">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground">Sign up</h1>
 
-        {error && (
-          <div className="mt-4 rounded-md bg-destructive/15 p-3 text-xs text-destructive">
-            {error}
+      <main className="animate-fade-in mx-auto w-full max-w-sm px-5 py-12 my-auto">
+        <div className="rounded-2xl border border-white/20 bg-slate-950/85 backdrop-blur-2xl p-7 shadow-2xl text-white">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-amber/20 text-amber border border-amber/30">
+              <UserPlus className="h-4 w-4" />
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight text-white">Sign up</h1>
           </div>
-        )}
 
-        <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-          <div className="grid grid-cols-2 gap-3">
-            <div className="space-y-1.5">
-              <Label htmlFor="firstName">First name</Label>
-              <Input id="firstName" name="firstName" required />
+          <p className="mt-2 text-xs text-slate-300">
+            Create your account to start managing expenses seamlessly
+          </p>
+
+          {error && (
+            <div className="mt-4 rounded-lg bg-destructive/20 border border-destructive/40 p-3 text-xs text-rose-300">
+              {error}
+            </div>
+          )}
+
+          <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-2 gap-3">
+              <div className="space-y-1.5">
+                <Label htmlFor="firstName" className="text-slate-200">First name</Label>
+                <Input
+                  id="firstName"
+                  name="firstName"
+                  required
+                  className="bg-white/5 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-amber"
+                />
+              </div>
+              <div className="space-y-1.5">
+                <Label htmlFor="lastName" className="text-slate-200">Last name</Label>
+                <Input
+                  id="lastName"
+                  name="lastName"
+                  required
+                  className="bg-white/5 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-amber"
+                />
+              </div>
             </div>
             <div className="space-y-1.5">
-              <Label htmlFor="lastName">Last name</Label>
-              <Input id="lastName" name="lastName" required />
+              <Label htmlFor="email" className="text-slate-200">Email</Label>
+              <Input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className="bg-white/5 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-amber"
+              />
             </div>
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" name="email" type="email" required />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="password">Password</Label>
-            <Input id="password" name="password" type="password" required />
-          </div>
-          <div className="space-y-1.5">
-            <Label htmlFor="currency">Default Currency</Label>
-            <Select value={currency} onValueChange={setCurrency}>
-              <SelectTrigger id="currency" className="w-full">
-                <SelectValue placeholder="Select currency" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="EUR">EUR (€)</SelectItem>
-                <SelectItem value="USD">USD ($)</SelectItem>
-                <SelectItem value="CZK">CZK (Kč)</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full rounded-md bg-amber px-5 py-2.5 text-xs font-semibold uppercase tracking-wide text-amber-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50"
-          >
-            {loading ? "Registering..." : "Sign up"}
-          </button>
-        </form>
+            <div className="space-y-1.5">
+              <Label htmlFor="password" className="text-slate-200">Password</Label>
+              <Input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="bg-white/5 border-white/20 text-white placeholder:text-slate-400 focus-visible:ring-amber"
+              />
+            </div>
+            <div className="space-y-1.5">
+              <Label htmlFor="currency" className="text-slate-200">Default Currency</Label>
+              <Select value={currency} onValueChange={setCurrency}>
+                <SelectTrigger id="currency" className="w-full bg-white/5 border-white/20 text-white">
+                  <SelectValue placeholder="Select currency" />
+                </SelectTrigger>
+                <SelectContent className="bg-slate-900 border-white/20 text-white">
+                  <SelectItem value="EUR">EUR (€)</SelectItem>
+                  <SelectItem value="USD">USD ($)</SelectItem>
+                  <SelectItem value="CZK">CZK (Kč)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-interactive w-full rounded-lg bg-amber px-5 py-3 text-xs font-bold uppercase tracking-wider text-amber-foreground shadow-lg shadow-amber/20 disabled:opacity-50 cursor-pointer"
+            >
+              {loading ? "Registering..." : "Sign up"}
+            </button>
+          </form>
+
+          <p className="mt-6 text-center text-xs text-slate-300">
+            Already have an account?{" "}
+            <Link to="/sign-in" className="font-semibold text-amber hover:underline">
+              Sign in
+            </Link>
+          </p>
+        </div>
       </main>
     </div>
   );
