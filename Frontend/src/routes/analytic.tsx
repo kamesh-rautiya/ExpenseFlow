@@ -21,12 +21,12 @@ import { api, authStorage } from "@/lib/api";
 export const Route = createFileRoute("/analytic")({
   head: () => ({
     meta: [
-      { title: "Analytic — Moneybag" },
+      { title: "Analytic — ExpenseFlow" },
       {
         name: "description",
         content: "Cash flow, category split and balance evolution for your chosen interval.",
       },
-      { property: "og:title", content: "Analytic — Moneybag" },
+      { property: "og:title", content: "Analytic — ExpenseFlow" },
       { property: "og:description", content: "Spending, categories and balance evolution." },
     ],
   }),

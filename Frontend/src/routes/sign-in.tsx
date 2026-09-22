@@ -9,10 +9,10 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/sign-in")({
   head: () => ({
     meta: [
-      { title: "Sign in — Moneybag" },
-      { name: "description", content: "Sign in to your Moneybag account to manage your finance." },
-      { property: "og:title", content: "Sign in — Moneybag" },
-      { property: "og:description", content: "Access your Moneybag dashboard." },
+      { title: "Sign in — ExpenseFlow" },
+      { name: "description", content: "Sign in to your ExpenseFlow account to manage your finance." },
+      { property: "og:title", content: "Sign in — ExpenseFlow" },
+      { property: "og:description", content: "Access your ExpenseFlow dashboard." },
     ],
   }),
   component: SignIn,

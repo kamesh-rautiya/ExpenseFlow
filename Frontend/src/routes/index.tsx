@@ -6,13 +6,13 @@ import heroImage from "@/assets/hero-finance.png";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Moneybag — Manage your personal finance like a pro" },
+      { title: "ExpenseFlow — Manage your personal finance like a pro" },
       {
         name: "description",
         content:
-          "Ditch the spreadsheets. Track accounts, add records on the go and analyze income and expenses with Moneybag.",
+          "Ditch the spreadsheets. Track accounts, add records on the go and analyze income and expenses with ExpenseFlow.",
       },
-      { property: "og:title", content: "Moneybag — Personal finance manager" },
+      { property: "og:title", content: "ExpenseFlow — Personal finance manager" },
       {
         property: "og:description",
         content: "Track accounts, records and analytics for your personal finance.",

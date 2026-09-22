@@ -27,12 +27,12 @@ import {
 export const Route = createFileRoute("/records")({
   head: () => ({
     meta: [
-      { title: "Records — Moneybag" },
+      { title: "Records — ExpenseFlow" },
       {
         name: "description",
         content: "Browse, filter and manage every income and expense record.",
       },
-      { property: "og:title", content: "Records — Moneybag" },
+      { property: "og:title", content: "Records — ExpenseFlow" },
       { property: "og:description", content: "Filter your income and expense records." },
     ],
   }),

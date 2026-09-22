@@ -27,12 +27,12 @@ import {
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "Dashboard — Moneybag" },
+      { title: "Dashboard — ExpenseFlow" },
       {
         name: "description",
         content: "See all your account balances and the latest records in one place.",
       },
-      { property: "og:title", content: "Dashboard — Moneybag" },
+      { property: "og:title", content: "Dashboard — ExpenseFlow" },
       { property: "og:description", content: "Account balances and latest records." },
     ],
   }),

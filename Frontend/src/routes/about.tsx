@@ -4,14 +4,14 @@ import { SiteHeader } from "@/components/moneybag/SiteHeader";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About Moneybag — personal finance tracker" },
+      { title: "About ExpenseFlow — personal finance tracker" },
       {
         name: "description",
         content:
-          "Moneybag helps you track accounts, records and categories, and understand where your money goes.",
+          "ExpenseFlow helps you track accounts, records and categories, and understand where your money goes.",
       },
-      { property: "og:title", content: "About Moneybag" },
-      { property: "og:description", content: "Why Moneybag exists and what it does for you." },
+      { property: "og:title", content: "About ExpenseFlow" },
+      { property: "og:description", content: "Why ExpenseFlow exists and what it does for you." },
     ],
   }),
   component: About,
@@ -39,7 +39,7 @@ function About() {
       <main className="mx-auto max-w-6xl px-5 py-16">
         <h1 className="text-4xl font-bold tracking-tight text-foreground">About</h1>
         <p className="mt-4 max-w-2xl text-muted-foreground">
-          Moneybag is a personal finance manager built around three simple ideas: know your
+          ExpenseFlow is a personal finance manager built around three simple ideas: know your
           balances, record every transaction in seconds, and let the numbers explain your habits.
         </p>
         <div className="mt-10 grid gap-5 md:grid-cols-3">

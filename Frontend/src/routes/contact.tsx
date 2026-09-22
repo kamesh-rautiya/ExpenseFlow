@@ -8,10 +8,10 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact Moneybag" },
-      { name: "description", content: "Questions or feedback about Moneybag? Send us a message." },
-      { property: "og:title", content: "Contact Moneybag" },
-      { property: "og:description", content: "Get in touch with the Moneybag team." },
+      { title: "Contact ExpenseFlow" },
+      { name: "description", content: "Questions or feedback about ExpenseFlow? Send us a message." },
+      { property: "og:title", content: "Contact ExpenseFlow" },
+      { property: "og:description", content: "Get in touch with the ExpenseFlow team." },
     ],
   }),
   component: Contact,

@@ -16,13 +16,13 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/sign-up")({
   head: () => ({
     meta: [
-      { title: "Sign up — Moneybag" },
+      { title: "Sign up — ExpenseFlow" },
       {
         name: "description",
-        content: "Create your free Moneybag account and start tracking income and expenses.",
+        content: "Create your free ExpenseFlow account and start tracking income and expenses.",
       },
-      { property: "og:title", content: "Sign up — Moneybag" },
-      { property: "og:description", content: "Create a free Moneybag account." },
+      { property: "og:title", content: "Sign up — ExpenseFlow" },
+      { property: "og:description", content: "Create a free ExpenseFlow account." },
     ],
   }),
   component: SignUp,

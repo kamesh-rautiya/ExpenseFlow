@@ -78,13 +78,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Moneybag — Personal finance manager" },
+      { title: "ExpenseFlow — Personal finance manager" },
       {
         name: "description",
         content: "Track accounts, records and analytics for your personal finance.",
       },
       { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Moneybag" },
+      { property: "og:title", content: "ExpenseFlow" },
       {
         property: "og:description",
         content: "Personal finance manager: accounts, records, analytics.",
