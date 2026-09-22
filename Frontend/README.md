@@ -1,24 +1,76 @@
-# Kro Explorer
+# ExpenseFlow — Frontend 💸
 
-explore kro aur frontend aise hi bna do jaise ss m dia h
+A modern, high-performance personal finance and expense tracking web application built with **React 19**, **TypeScript**, **Vite**, **TanStack Router & Query**, **Tailwind CSS**, and **Recharts**.
 
-This project was built with [Lovable](https://lovable.dev).
+---
 
-## Build with Lovable
+## 🎨 Design & Features
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/ddc086d0-e7f1-41e1-bb92-0cbb4b6ef1a3).
+- **Modern Glassmorphism UI:** Dark-mode glassmorphic aesthetics with vibrant violet accents and crisp typography.
+- **Interactive Visualizations:** Live cash flow summaries, category breakdowns via interactive donut charts, and balance evolution time series powered by Recharts.
+- **Multi-Account Management:** Add, edit, and track accounts (Savings, Current, Family budget) with customizable colors and currencies.
+- **Transaction Records:** Fast expense and income recording with category badges, date tracking, and multi-criteria filters.
+- **JWT Authentication:** Secure user sign-in and sign-up with stateful session persistence.
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+---
 
-## Development
+## 📸 Screenshots
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+| Landing Page | Dashboard Overview |
+| :---: | :---: |
+| <img src="../screenshots/landing.png" width="450" alt="Landing Page" /> | <img src="../screenshots/dashboard.png" width="450" alt="Dashboard" /> |
 
-```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+| Account Management | Analytics & Trends |
+| :---: | :---: |
+| <img src="../screenshots/accounts.png" width="450" alt="Account Management" /> | <img src="../screenshots/analytics.png" width="450" alt="Analytics" /> |
+
+| Transactions & Records | Authentication |
+| :---: | :---: |
+| <img src="../screenshots/records.png" width="450" alt="Records" /> | <img src="../screenshots/signin.png" width="450" alt="Sign In" /> |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- **Node.js 18+**
+- **npm** or **pnpm** / **bun**
+
+### Installation
+
+```bash
+# Navigate to the frontend directory
+cd Frontend
+
+# Install dependencies
+npm install
+
+# Start development server (runs on http://localhost:8080)
 npm run dev
+```
+
+### Production Build
+
+```bash
+# Type-check and build production bundle
+npm run build
+
+# Preview production build locally
+npm run preview
+```
+
+---
+
+## 📂 Project Structure
+
+```
+Frontend/
+├── src/
+│   ├── assets/              # Artwork and visual assets
+│   ├── components/          # Reusable UI & layout components (AppHeader, Dialog, etc.)
+│   ├── lib/                 # API client, auth storage, utilities
+│   ├── routes/              # TanStack file-based routes (index, dashboard, records, analytic, sign-in, sign-up)
+│   └── main.tsx             # Application entry point
+├── package.json
+└── vite.config.ts
 ```

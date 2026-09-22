@@ -117,7 +117,16 @@ docker compose up -d
 
 ## 🎆 Screenshots
 
-<img src="assets/images/landing-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/dashboard-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/records-shadow,rounded.webp" alt="Dashboard" />
-<img src="assets/images/analytic-shadow,rounded.webp" alt="Dashboard" />
+### Landing Page
+<img src="../screenshots/landing.png" alt="Landing Page" />
+
+### Dashboard & Accounts
+<img src="../screenshots/dashboard.png" alt="Dashboard" />
+<img src="../screenshots/accounts.png" alt="Accounts Management" />
+
+### Transactions & Records
+<img src="../screenshots/records.png" alt="Records" />
+
+### Analytics & Reports
+<img src="../screenshots/analytics.png" alt="Analytics" />
+

@@ -24,19 +24,20 @@ ExpenseFlow is a modern, full-stack personal finance and expense tracking web ap
 ### 📊 Dashboard & Overview
 ![Dashboard](screenshots/dashboard.png)
 
-### 📈 Analytics & Trends
-![Analytics](screenshots/analytics.png)
-
-### 💳 Account Management
+### 💳 Account Creation & Configuration
 ![Accounts](screenshots/accounts.png)
 
-### 📝 Transactions & Records
+### 📈 Financial Analytics & Visual Trends
+![Analytics](screenshots/analytics.png)
+
+### 📝 Transactions & Records Tracking
 ![Records](screenshots/records.png)
 
-### 🔐 Authentication
+### 🔐 Secure Authentication Flow
 | Sign In | Sign Up |
 | :---: | :---: |
 | ![Sign In](screenshots/signin.png) | ![Sign Up](screenshots/signup.png) |
+
 
 ---
 
