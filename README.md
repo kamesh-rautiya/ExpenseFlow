@@ -3,16 +3,26 @@
 ExpenseFlow is a modern, full-stack personal finance and expense tracking web application. It combines a robust **Spring Boot 3** REST API backend with a responsive **React 19 / Vite** frontend powered by TanStack Start, Tailwind CSS, and Recharts.
 
 [![Live Demo](https://img.shields.io/badge/Live%20Demo-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://frontend-production-ae7e.up.railway.app)
-[![API Status](https://img.shields.io/badge/API-Live-success?style=for-the-badge&logo=spring&logoColor=white)](https://backend-production-78678.up.railway.app/api/)
+[![API Status](https://img.shields.io/badge/API-Live%20Online-success?style=for-the-badge&logo=spring&logoColor=white)](https://backend-production-78678.up.railway.app/api/)
+[![Swagger Docs](https://img.shields.io/badge/Swagger-OpenAPI%203-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://backend-production-78678.up.railway.app/api/swagger-ui/index.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 
 ---
 
-## 🌐 Live Deployment
+## 🌐 Live Demo & Deployment
 
-- **Frontend App:** [https://frontend-production-ae7e.up.railway.app](https://frontend-production-ae7e.up.railway.app)
-- **Backend API:** [https://backend-production-78678.up.railway.app/api/](https://backend-production-78678.up.railway.app/api/)
-- **Swagger Documentation:** [https://backend-production-78678.up.railway.app/api/swagger-ui/index.html](https://backend-production-78678.up.railway.app/api/swagger-ui/index.html)
+The latest version of **ExpenseFlow** is deployed and running live on **Railway Cloud**:
+
+- **🚀 Live Web Application:** [https://frontend-production-ae7e.up.railway.app](https://frontend-production-ae7e.up.railway.app)
+- **⚡ Backend REST API:** [https://backend-production-78678.up.railway.app/api/](https://backend-production-78678.up.railway.app/api/)
+- **📖 Interactive Swagger API Docs:** [https://backend-production-78678.up.railway.app/api/swagger-ui/index.html](https://backend-production-78678.up.railway.app/api/swagger-ui/index.html)
+
+> [!TIP]
+> **Instant Demo Login:**
+> - **Email:** `honza@gmail.com`
+> - **Password:** `12345678`
+> *(Or click **"Sign up"** on the live demo to create your own account)*
+
 
 ---
 

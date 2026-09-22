@@ -2,7 +2,11 @@
 
 A modern, high-performance personal finance and expense tracking web application built with **React 19**, **TypeScript**, **Vite**, **TanStack Router & Query**, **Tailwind CSS**, and **Recharts**.
 
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white)](https://frontend-production-ae7e.up.railway.app)
+[![API Status](https://img.shields.io/badge/API-Live%20Online-success?style=for-the-badge&logo=spring&logoColor=white)](https://backend-production-78678.up.railway.app/api/)
+
 ---
+
 
 ## 🎨 Design & Features
 
